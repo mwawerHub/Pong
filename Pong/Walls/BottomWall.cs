@@ -9,7 +9,7 @@ namespace Pong.Walls
     {
         public BottomWall():base()
         {
-            YStartValue = Board.BoardHeight - Board.BoardYMargin;
+            YStartValue = Board.BoardHeight;
         }
     }
 }

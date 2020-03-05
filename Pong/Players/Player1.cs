@@ -20,10 +20,10 @@ namespace Pong.Players
 
         public Player1()
         {
-            Width = 4;
+            Width = 5;
             Height = 1;
             XStartValue = Board.BoardXMargin;
-            YStartValue = Board.BoardHeight / 2 - 2;
+            YStartValue = Board.BoardHeight / 2 + 3;
         }
     }
 }

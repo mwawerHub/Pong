@@ -5,14 +5,6 @@ namespace Pong.Players
 {
     public class Player2 : ConsolePlayer
     {
-        public Player2()
-        {
-            Width = 4;
-            Height = 1;
-            XStartValue = Board.BoardWidth;
-            YStartValue = Board.BoardHeight / 2 - 2;
-        }
-
         public override void Move(ConsoleKey key)
         {
             switch (key)
@@ -24,6 +16,14 @@ namespace Pong.Players
                     MoveDown();
                     break;
             }
+        }
+
+        public Player2()
+        {
+            Width = 5;
+            Height = 1;
+            XStartValue = Board.BoardWidth - 1;
+            YStartValue = Board.BoardHeight / 2 + 3;
         }
     }
 }
