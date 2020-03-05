@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Pong.Interfaces;
 
-namespace Pong
+namespace Pong.Abstracts
 {
     public abstract class Shape : IMovement
     {

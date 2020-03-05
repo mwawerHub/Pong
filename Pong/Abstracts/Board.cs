@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Pong
+﻿namespace Pong.Abstracts
 {
     public abstract class Board
     {

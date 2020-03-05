@@ -1,6 +1,7 @@
 ﻿using System;
+using Pong.Abstracts;
 
-namespace Pong
+namespace Pong.Players
 {
     public class Player1 : ConsolePlayer
     {

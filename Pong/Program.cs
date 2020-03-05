@@ -1,5 +1,6 @@
 ﻿using System;
 using Pong.Players;
+using Pong.Walls;
 
 namespace Pong
 {
@@ -10,6 +11,8 @@ namespace Pong
         {
             var player1 = new Player1();
             var player2 = new Player2();
+            var bottomWall = new BottomWall();
+            var topWall = new TopWall();
 
             while (true)
             {
@@ -20,6 +23,8 @@ namespace Pong
 
                 player1.Draw();
                 player2.Draw();
+                topWall.Draw();
+                bottomWall.Draw();
 
                 if (Console.KeyAvailable)
                 {
