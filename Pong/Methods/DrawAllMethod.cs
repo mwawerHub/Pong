@@ -1,7 +1,5 @@
 ﻿using System;
 using Pong.Abstracts;
-using Pong.Players;
-using Pong.Walls;
 
 namespace Pong.Methods
 {
@@ -9,6 +7,7 @@ namespace Pong.Methods
     {
         public static void DrawAll()
         {
+            Console.ForegroundColor = ConsoleColor.White;
             try
             {
                 Player1.Draw();

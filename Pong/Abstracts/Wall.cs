@@ -6,11 +6,13 @@ namespace Pong.Abstracts
     { 
         public override void Draw()
         {
+            Console.BackgroundColor = ConsoleColor.White;
             for (var i = 0; i < Width; i++)
             {
                 Console.SetCursorPosition(XStartValue + i, YStartValue);
                 Console.WriteLine("o");
             }
+            Console.BackgroundColor = ConsoleColor.Black;
         }
 
         protected Wall()

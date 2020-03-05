@@ -1,5 +1,4 @@
-﻿
-using Pong.Abstracts;
+﻿using Pong.Abstracts;
 using Pong.Players;
 using Pong.Walls;
 

@@ -1,14 +1,14 @@
 ﻿using System;
-using Pong.Abstracts;
+using Pong.Globals;
 
 namespace Pong.Methods
 {
-     public class UpdateAllMethod : ObjectContainer
+     public class UpdateAllMethod
     {
-        public static void UpdatePosition(ConsoleKey key)
+        public static void UpdateAll(ConsoleKey key)
         {
-            Player1.Move(key);
-            Player2.Move(key);
+            UpdatePlayerMethods.UpdatePlayerPosition(key);
+            State.ScreenNeedsRefresh = true;
         }
     }
 }

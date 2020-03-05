@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Threading;
-using Pong.Abstracts;
+using Pong.Globals;
 using Pong.Methods;
-using Pong.Players;
-using Pong.Walls;
 
 namespace Pong
 {
@@ -16,16 +14,21 @@ namespace Pong
 
             while (true)
             {
-                Console.Clear();
-                Thread.Sleep(10);
-                DrawAllMethod.DrawAll();
+                Thread.Sleep(5);
 
                 if (Console.KeyAvailable)
                 {
                     var key = Console.ReadKey(true).Key;
-                    UpdateAllMethod.UpdatePosition(key);
+                    UpdateAllMethod.UpdateAll(key);
                 }
 
+                if (State.ScreenNeedsRefresh)
+                {
+                    Console.Clear();
+                    DrawAllMethod.DrawAll();
+                }
+
+                State.ScreenNeedsRefresh = false;
             }
         }
     }

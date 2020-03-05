@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Pong.Abstracts;
+﻿using Pong.Abstracts;
 
 namespace Pong.Walls
 {
