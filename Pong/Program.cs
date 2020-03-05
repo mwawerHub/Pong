@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Threading;
 using Pong.Abstracts;
+using Pong.Methods;
 using Pong.Players;
 using Pong.Walls;
 
@@ -10,34 +12,20 @@ namespace Pong
     {
         static void Main(string[] args)
         {
-            var player1 = new Player1();
-            var player2 = new Player2();
-            var bottomWall = new BottomWall();
-            var topWall = new TopWall();
-            var ball = new Ball();
+            InitializeAllMethod.InitializeGame();
 
             while (true)
             {
                 Console.Clear();
-
-                Console.BackgroundColor = ConsoleColor.White;
-                Console.ForegroundColor = ConsoleColor.White;
-
-                player1.Draw();
-                player2.Draw();
-                topWall.Draw();
-                bottomWall.Draw();
-                ball.Draw();
+                Thread.Sleep(10);
+                DrawAllMethod.DrawAll();
 
                 if (Console.KeyAvailable)
                 {
                     var key = Console.ReadKey(true).Key;
-
-                    player1.Move(key);
-                    player2.Move(key);
+                    UpdateAllMethod.UpdatePosition(key);
                 }
 
-                Console.BackgroundColor = ConsoleColor.Black;
             }
         }
     }
