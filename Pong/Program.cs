@@ -10,7 +10,7 @@ namespace Pong
     {
         static void Main(string[] args)
         {
-            InitializeAllMethod.InitializeGame();
+            Initialize.InitializeGame();
 
             while (true)
             {
@@ -19,13 +19,13 @@ namespace Pong
                 if (Console.KeyAvailable)
                 {
                     var key = Console.ReadKey(true).Key;
-                    UpdateAllMethod.UpdateAll(key);
+                    Update.UpdateAll(key);
                 }
 
                 if (State.ScreenNeedsRefresh)
                 {
                     Console.Clear();
-                    DrawAllMethod.DrawAll();
+                    Draw.DrawAll();
                 }
 
                 State.ScreenNeedsRefresh = false;

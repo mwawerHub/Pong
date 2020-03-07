@@ -4,8 +4,14 @@ using Pong.Walls;
 
 namespace Pong.Methods
 {
-    public class InitializeAllMethod : ObjectContainer
+    public class Initialize
     {
+        protected static Player1 Player1;
+        protected static Player2 Player2;
+        protected static BottomWall BottomWall;
+        protected static TopWall TopWall;
+        protected static Ball Ball;
+
         public static void InitializeGame()
         {
             Player1 = new Player1();

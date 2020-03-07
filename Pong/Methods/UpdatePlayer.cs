@@ -3,7 +3,7 @@ using Pong.Abstracts;
 
 namespace Pong.Methods
 {
-    public class UpdatePlayerMethods : ObjectContainer
+    public class UpdatePlayer : Initialize
     {
         public static void UpdatePlayerPosition(ConsoleKey key)
         {

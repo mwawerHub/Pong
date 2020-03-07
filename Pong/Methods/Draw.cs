@@ -3,7 +3,7 @@ using Pong.Abstracts;
 
 namespace Pong.Methods
 {
-    public class DrawAllMethod : ObjectContainer
+    public class Draw : Initialize
     {
         public static void DrawAll()
         {

@@ -3,11 +3,11 @@ using Pong.Globals;
 
 namespace Pong.Methods
 {
-     public class UpdateAllMethod
+     public class Update
     {
         public static void UpdateAll(ConsoleKey key)
         {
-            UpdatePlayerMethods.UpdatePlayerPosition(key);
+            UpdatePlayer.UpdatePlayerPosition(key);
             State.ScreenNeedsRefresh = true;
         }
     }
