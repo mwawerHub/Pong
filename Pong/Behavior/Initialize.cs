@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Security.Cryptography;
-using Pong.Abstracts;
 using Pong.Enums;
+using Pong.Objects;
 using Pong.Players;
-using Pong.Walls;
 
-namespace Pong.Methods
+namespace Pong.Behavior
 {
     public class Initialize
     {
@@ -23,7 +21,7 @@ namespace Pong.Methods
             Player2 = new Player2();
             BottomWall = new BottomWall();
             TopWall = new TopWall();
-            Ball = new Ball {Direction = (Direction) Rng.Next(0, 5)};
+            Ball = new Ball { Direction = (Direction)Rng.Next(0, 5) };
         }
     }
 }

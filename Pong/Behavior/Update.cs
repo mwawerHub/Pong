@@ -1,0 +1,69 @@
+﻿using System;
+using Pong.Abstracts;
+using Pong.Globals;
+
+namespace Pong.Behavior
+{
+    public class Update : Initialize
+    {
+
+        private static void UpdatePlayerPosition(ConsoleKey key)
+        {
+            if (key == 0) return;
+            Player1.Move(key);
+            Player2.Move(key);
+        }
+
+        private static void UpdateBallPosition()
+        {
+            if (Ball.CanMove()) Ball.Move();
+
+            if (CheckPosition.HasHitWall(Ball.YStartValue))
+            {
+                Ball.ChangeDirection();
+                Ball.Move();
+            }
+
+            if (CheckPosition.HasHitPlayer(Player1, Ball))
+            {
+                Ball.ChangeDirection();
+                Ball.Move();
+            }
+
+            if (CheckPosition.HasHitPlayer(Player2, Ball))
+            {
+                Ball.ChangeDirection();
+                Ball.Move();
+            }
+
+            if (CheckPosition.HasPlayer1Scored(Ball.XStartValue))
+            {
+                ResetBallPosition();
+
+                Ball.ChangeDirection();
+                Ball.Move();
+            }
+
+            if (CheckPosition.HasPlayer2Scored(Ball.XStartValue))
+            {
+                ResetBallPosition();
+
+                Ball.ChangeDirection();
+                Ball.Move();
+            }
+        }
+
+        private static void ResetBallPosition()
+        {
+            Ball.XStartValue = (Board.BoardWidth + Board.BoardXMargin ) / 2;
+            Ball.YStartValue = (Board.BoardHeight + Board.BoardYMargin) / 2;
+        }
+
+        public static void UpdateAll(ConsoleKey key)
+        {
+            UpdatePlayerPosition(key);
+            UpdateBallPosition();
+            State.ScreenNeedsRefresh = true;
+        }
+    }
+}

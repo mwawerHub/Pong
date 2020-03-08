@@ -3,7 +3,7 @@
 namespace Pong.Abstracts
 {
     public abstract class Wall : Shape
-    { 
+    {
         public override void Draw()
         {
             Console.BackgroundColor = ConsoleColor.White;
@@ -17,7 +17,7 @@ namespace Pong.Abstracts
 
         protected Wall()
         {
-            XStartValue = Board.BoardXMargin;
+            XStartValue = Board.BoardXMargin + 1;
             Width = Board.BoardWidth - XStartValue;
             Height = 1;
         }

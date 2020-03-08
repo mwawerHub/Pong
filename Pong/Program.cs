@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
+using Pong.Behavior;
 using Pong.Globals;
-using Pong.Methods;
 
 namespace Pong
 {

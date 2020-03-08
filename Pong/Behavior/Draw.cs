@@ -1,7 +1,6 @@
 ﻿using System;
-using Pong.Abstracts;
 
-namespace Pong.Methods
+namespace Pong.Behavior
 {
     public class Draw : Initialize
     {

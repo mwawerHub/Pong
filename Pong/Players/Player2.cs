@@ -22,8 +22,8 @@ namespace Pong.Players
         {
             Width = 5;
             Height = 1;
-            XStartValue = Board.BoardWidth - 1;
-            YStartValue = Board.BoardHeight / 2 + 3;
+            XStartValue = Board.BoardWidth;
+            YStartValue = (Board.BoardHeight - 1) / 2 + 3;
         }
     }
 }

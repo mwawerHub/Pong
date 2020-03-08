@@ -1,7 +1,8 @@
 ﻿using System;
+using Pong.Abstracts;
 using Pong.Enums;
 
-namespace Pong.Abstracts
+namespace Pong.Objects
 {
     public class Ball : Shape
     {
@@ -63,6 +64,25 @@ namespace Pong.Abstracts
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        public void ChangeDirection()
+        {
+            switch (Direction)
+            {
+                case Direction.NE:
+                    Direction = Direction.SE;
+                    break;
+                case Direction.SE:
+                    Direction = Direction.NE;
+                    break;
+                case Direction.SW:
+                    Direction = Direction.NW;
+                    break;
+                case Direction.NW:
+                    Direction = Direction.SW;
+                    break;
             }
         }
     }
