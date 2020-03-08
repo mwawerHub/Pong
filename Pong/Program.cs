@@ -16,11 +16,9 @@ namespace Pong
             {
                 Thread.Sleep(5);
 
-                if (Console.KeyAvailable)
-                {
-                    var key = Console.ReadKey(true).Key;
-                    Update.UpdateAll(key);
-                }
+                var key = (Console.KeyAvailable) ? Console.ReadKey(true).Key : 0;
+
+                Update.UpdateAll(key);
 
                 if (State.ScreenNeedsRefresh)
                 {

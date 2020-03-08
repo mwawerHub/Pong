@@ -1,4 +1,7 @@
-﻿using Pong.Abstracts;
+﻿using System;
+using System.Security.Cryptography;
+using Pong.Abstracts;
+using Pong.Enums;
 using Pong.Players;
 using Pong.Walls;
 
@@ -12,13 +15,15 @@ namespace Pong.Methods
         protected static TopWall TopWall;
         protected static Ball Ball;
 
+        private static readonly Random _rng = new Random();
+
         public static void InitializeGame()
         {
             Player1 = new Player1();
             Player2 = new Player2();
             BottomWall = new BottomWall();
             TopWall = new TopWall();
-            Ball = new Ball();
+            Ball = new Ball {Direction = (Direction) _rng.Next(0, 5)};
         }
     }
 }
