@@ -14,7 +14,7 @@ namespace Pong
 
             while (true)
             {
-                Thread.Sleep(5);
+                Thread.Sleep(10);
 
                 var key = (Console.KeyAvailable) ? Console.ReadKey(true).Key : 0;
 

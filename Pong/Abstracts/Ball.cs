@@ -5,7 +5,11 @@ namespace Pong.Abstracts
 {
     public class Ball : Shape
     {
+        public const int MovementSpeed = 400;
+
         public Direction Direction { get; set; }
+        public DateTime LastBallMovement { get; set; }
+
 
         public Ball()
         {
@@ -24,6 +28,11 @@ namespace Pong.Abstracts
                 Console.WriteLine("o");
             }
             Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        public bool CanMove()
+        {
+            return ((DateTime.Now - LastBallMovement).TotalMilliseconds > MovementSpeed);
         }
 
         public void Move()

@@ -4,7 +4,8 @@ using Pong.Globals;
 namespace Pong.Methods
 {
      public class Update : Initialize
-    {
+     { 
+
         private static void UpdatePlayerPosition(ConsoleKey key)
         {
             if (key == 0) return;
@@ -14,7 +15,7 @@ namespace Pong.Methods
 
         private static void UpdateBallPosition()
         {
-            Ball.Move();
+            if(Ball.CanMove()) Ball.Move();
         }
         
         public static void UpdateAll(ConsoleKey key)
