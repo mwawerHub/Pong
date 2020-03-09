@@ -7,7 +7,7 @@ namespace Pong.Abstracts
         public override void Draw()
         {
             Console.BackgroundColor = ConsoleColor.White;
-            for (var i = 0; i < Width; i++)
+            for (var i = 0; i <= Width; i++)
             {
                 Console.SetCursorPosition(XStartValue + i, YStartValue);
                 Console.WriteLine("o");
@@ -17,7 +17,7 @@ namespace Pong.Abstracts
 
         protected Wall()
         {
-            XStartValue = Board.BoardXMargin + 1;
+            XStartValue = Board.BoardXMargin;
             Width = Board.BoardWidth - XStartValue;
             Height = 1;
         }

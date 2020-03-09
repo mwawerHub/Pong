@@ -6,7 +6,7 @@ namespace Pong.Objects
     {
         public TopWall() : base()
         {
-            YStartValue = Board.BoardYMargin + 1;
+            YStartValue = Board.BoardYMargin;
         }
     }
 }

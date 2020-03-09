@@ -6,11 +6,13 @@ namespace Pong.Objects
 {
     public class Ball : Shape
     {
-        public const int MovementSpeed = 400;
+        public const int MovementSpeed = 50;
+
+        private static readonly Random Rng = new Random();
 
         public Direction Direction { get; set; }
         public DateTime LastBallMovement { get; set; }
-
+        public bool IsAtStartPosition { get; set; }      
 
         public Ball()
         {
@@ -18,6 +20,8 @@ namespace Pong.Objects
             Width = 1;
             XStartValue = (Board.BoardWidth + Board.BoardXMargin) / 2;
             YStartValue = (Board.BoardHeight + Board.BoardYMargin) / 2;
+            IsAtStartPosition = true;
+            ChangeDirection();
         }
 
         public override void Draw()
@@ -65,25 +69,25 @@ namespace Pong.Objects
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+            IsAtStartPosition = false;
+            LastBallMovement = DateTime.Now;
         }
 
         public void ChangeDirection()
         {
-            switch (Direction)
-            {
-                case Direction.NE:
-                    Direction = Direction.SE;
-                    break;
-                case Direction.SE:
-                    Direction = Direction.NE;
-                    break;
-                case Direction.SW:
-                    Direction = Direction.NW;
-                    break;
-                case Direction.NW:
-                    Direction = Direction.SW;
-                    break;
-            }
+            if (IsAtStartPosition)
+                Direction = (Direction)Rng.Next(0, 5);
+            else
+                Direction = Direction switch
+                {
+                    Direction.NE => Direction.SE,
+                    Direction.SE => Direction.NE,
+                    Direction.SW => Direction.NW,
+                    Direction.NW => Direction.SW,
+                    Direction.E => Direction.W,
+                    Direction.W => Direction.E,
+                    _ => Direction
+                };
         }
     }
 }

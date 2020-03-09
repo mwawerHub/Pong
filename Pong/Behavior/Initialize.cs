@@ -13,7 +13,6 @@ namespace Pong.Behavior
         protected static TopWall TopWall;
         protected static Ball Ball;
 
-        private static readonly Random Rng = new Random();
 
         public static void InitializeGame()
         {
@@ -21,7 +20,7 @@ namespace Pong.Behavior
             Player2 = new Player2();
             BottomWall = new BottomWall();
             TopWall = new TopWall();
-            Ball = new Ball { Direction = (Direction)Rng.Next(0, 5) };
+            Ball = new Ball();
         }
     }
 }

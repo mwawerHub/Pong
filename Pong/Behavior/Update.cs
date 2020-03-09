@@ -18,22 +18,18 @@ namespace Pong.Behavior
         {
             if (Ball.CanMove()) Ball.Move();
 
-            if (CheckPosition.HasHitWall(Ball.YStartValue))
-            {
-                Ball.ChangeDirection();
-                Ball.Move();
-            }
-
             if (CheckPosition.HasHitPlayer(Player1, Ball))
             {
                 Ball.ChangeDirection();
                 Ball.Move();
+                return;
             }
 
             if (CheckPosition.HasHitPlayer(Player2, Ball))
             {
                 Ball.ChangeDirection();
                 Ball.Move();
+                return;
             }
 
             if (CheckPosition.HasPlayer1Scored(Ball.XStartValue))
@@ -42,6 +38,7 @@ namespace Pong.Behavior
 
                 Ball.ChangeDirection();
                 Ball.Move();
+                return;
             }
 
             if (CheckPosition.HasPlayer2Scored(Ball.XStartValue))
@@ -50,6 +47,14 @@ namespace Pong.Behavior
 
                 Ball.ChangeDirection();
                 Ball.Move();
+                return;
+            }
+
+            if (CheckPosition.HasHitWall(Ball.YStartValue))
+            {
+                Ball.ChangeDirection();
+                Ball.Move();
+                return;
             }
         }
 
@@ -57,6 +62,7 @@ namespace Pong.Behavior
         {
             Ball.XStartValue = (Board.BoardWidth + Board.BoardXMargin ) / 2;
             Ball.YStartValue = (Board.BoardHeight + Board.BoardYMargin) / 2;
+            Ball.IsAtStartPosition = true;
         }
 
         public static void UpdateAll(ConsoleKey key)
