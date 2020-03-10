@@ -21,6 +21,7 @@ namespace Pong.Behavior
             if (CheckPosition.HasHitPlayer(Player1, Ball))
             {
                 Ball.ChangeDirection();
+                Ball.SetAngle(Player1.YStartValue);
                 Ball.Move();
                 return;
             }
@@ -28,6 +29,7 @@ namespace Pong.Behavior
             if (CheckPosition.HasHitPlayer(Player2, Ball))
             {
                 Ball.ChangeDirection();
+                Ball.SetAngle(Player2.YStartValue);
                 Ball.Move();
                 return;
             }

@@ -48,7 +48,7 @@ namespace Pong.Objects
                 Angle = Angle.Angle30;
             else if (YStartValue - y == 1 || YStartValue - y == 3)
                 Angle = Angle.Angle45;
-            else if (YStartValue - y == 1) Angle = Angle.Angle90;
+            else if (YStartValue - y == 2) Angle = Angle.Angle90;
             else throw new InvalidEnumArgumentException("Given y value out of player range");
         }
 
