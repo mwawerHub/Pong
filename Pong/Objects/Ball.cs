@@ -16,8 +16,7 @@ namespace Pong.Objects
         public DateTime LastBallMovement { get; set; }
         public bool IsAtStartPosition { get; set; }      
 
-        public Ball()
-        {
+        public Ball(){
             Height = 1;
             Width = 1;
             XStartValue = (Board.BoardWidth + Board.BoardXMargin) / 2;
@@ -26,36 +25,28 @@ namespace Pong.Objects
             ChangeDirection();
         }
 
-        public override void Draw()
-        {
+        public override void Draw(){
             Console.ForegroundColor = ConsoleColor.Green;
-            for (var i = 0; i < Width; i++)
-            {
+            for (var i = 0; i < Width; i++){
                 Console.SetCursorPosition(XStartValue + i, YStartValue);
                 Console.WriteLine("o");
             }
             Console.ForegroundColor = ConsoleColor.White;
         }
 
-        public bool CanMove()
-        {
+        public bool CanMove(){
             return ((DateTime.Now - LastBallMovement).TotalMilliseconds > MovementSpeed);
         }
 
-        public void SetAngle(int y)
-        {
-            if (YStartValue - y == 0 || YStartValue - y == 4)
-                Angle = Angle.Angle30;
-            else if (YStartValue - y == 1 || YStartValue - y == 3)
-                Angle = Angle.Angle45;
+        public void SetAngle(int y){
+            if (YStartValue - y == 0 || YStartValue - y == 4) Angle = Angle.Angle30;
+            else if (YStartValue - y == 1 || YStartValue - y == 3) Angle = Angle.Angle45;
             else if (YStartValue - y == 2) Angle = Angle.Angle90;
             else throw new InvalidEnumArgumentException("Given y value out of player range");
         }
 
-        public void Move()
-        {
-            switch (Direction)
-            {
+        public void Move(){
+            switch (Direction){
                 case Direction.NE:
                     MoveUp();
                     MoveRight();
@@ -85,13 +76,9 @@ namespace Pong.Objects
             LastBallMovement = DateTime.Now;
         }
 
-        public void ChangeDirection()
-        {
-            if (IsAtStartPosition)
-                Direction = (Direction)Rng.Next(0, 5);
-            else
-                Direction = Direction switch
-                {
+        public void ChangeDirection(){
+            if (IsAtStartPosition) Direction = (Direction)Rng.Next(0, 5);
+            else Direction = Direction switch{
                     Direction.NE => Direction.SE,
                     Direction.SE => Direction.NE,
                     Direction.SW => Direction.NW,

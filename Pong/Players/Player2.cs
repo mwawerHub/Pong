@@ -5,10 +5,8 @@ namespace Pong.Players
 {
     public class Player2 : ConsolePlayer
     {
-        public override void Move(ConsoleKey key)
-        {
-            switch (key)
-            {
+        public override void Move(ConsoleKey key){
+            switch (key){
                 case ConsoleKey.UpArrow:
                     MoveUp();
                     break;
@@ -18,8 +16,7 @@ namespace Pong.Players
             }
         }
 
-        public Player2()
-        {
+        public Player2(){
             Width = 5;
             Height = 1;
             XStartValue = Board.BoardWidth;

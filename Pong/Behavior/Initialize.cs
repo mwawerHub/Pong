@@ -14,8 +14,7 @@ namespace Pong.Behavior
         protected static Ball Ball;
 
 
-        public static void InitializeGame()
-        {
+        public static void InitializeGame(){
             Player1 = new Player1();
             Player2 = new Player2();
             BottomWall = new BottomWall();

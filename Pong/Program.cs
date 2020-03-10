@@ -11,21 +11,14 @@ namespace Pong
         static void Main(string[] args)
         {
             Initialize.InitializeGame();
-
-            while (true)
-            {
+            while (true){
                 Thread.Sleep(10);
-
                 var key = (Console.KeyAvailable) ? Console.ReadKey(true).Key : 0;
-
                 Update.UpdateAll(key);
-
-                if (State.ScreenNeedsRefresh)
-                {
+                if (State.ScreenNeedsRefresh){
                     Console.Clear();
                     Draw.DrawAll();
                 }
-
                 State.ScreenNeedsRefresh = false;
             }
         }
