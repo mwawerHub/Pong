@@ -2,9 +2,9 @@
 {
     interface IMovement
     {
-        void MoveLeft();
-        void MoveRight();
-        void MoveUp();
-        void MoveDown();
+        void MoveLeft(byte x);
+        void MoveRight(byte x);
+        void MoveUp(byte y);
+        void MoveDown(byte y);
     }
 }

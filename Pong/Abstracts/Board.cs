@@ -2,9 +2,9 @@
 {
     public abstract class Board
     {
-        public const int BoardWidth = 101;
-        public const int BoardHeight = 101;
-        public const int BoardXMargin = 9;
-        public const int BoardYMargin = 9;
+        public const byte BoardWidth = 101;
+        public const byte BoardHeight = 101;
+        public const byte BoardXMargin = 9;
+        public const byte BoardYMargin = 9;
     }
 }

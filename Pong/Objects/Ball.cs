@@ -7,7 +7,7 @@ namespace Pong.Objects
 {
     public class Ball : Shape
     {
-        public const int MovementSpeed = 50;
+        public const byte MovementSpeed = 50;
 
         private static readonly Random Rng = new Random();
 

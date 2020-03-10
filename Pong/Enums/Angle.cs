@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Pong.Enums
 {
-    public enum Angle
+    public enum Angle : byte
     {
         Angle30,
         Angle45,

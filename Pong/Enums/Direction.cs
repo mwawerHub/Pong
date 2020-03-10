@@ -1,6 +1,6 @@
 ﻿namespace Pong.Enums
 {
-    public enum Direction
+    public enum Direction : byte
     {
         NE,
         E,
