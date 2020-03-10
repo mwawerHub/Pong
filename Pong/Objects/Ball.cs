@@ -40,6 +40,10 @@ namespace Pong.Objects
             return ((DateTime.Now - LastBallMovement).TotalMilliseconds > MovementSpeed);
         }
 
+        public void SetAngle(Angle angle)
+        {
+
+        }
         public void Move()
         {
             switch (Direction)
