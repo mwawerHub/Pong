@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using Pong.Abstracts;
 using Pong.Enums;
 
@@ -11,6 +12,7 @@ namespace Pong.Objects
         private static readonly Random Rng = new Random();
 
         public Direction Direction { get; set; }
+        public Angle Angle { get; set; }
         public DateTime LastBallMovement { get; set; }
         public bool IsAtStartPosition { get; set; }      
 
@@ -40,10 +42,16 @@ namespace Pong.Objects
             return ((DateTime.Now - LastBallMovement).TotalMilliseconds > MovementSpeed);
         }
 
-        public void SetAngle(Angle angle)
+        public void SetAngle(int y)
         {
-
+            if (YStartValue - y == 0 || YStartValue - y == 4)
+                Angle = Angle.Angle30;
+            else if (YStartValue - y == 1 || YStartValue - y == 3)
+                Angle = Angle.Angle45;
+            else if (YStartValue - y == 1) Angle = Angle.Angle90;
+            else throw new InvalidEnumArgumentException("Given y value out of player range");
         }
+
         public void Move()
         {
             switch (Direction)
