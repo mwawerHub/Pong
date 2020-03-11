@@ -14,7 +14,10 @@ namespace Pong.Objects
         public Direction Direction { get; set; }
         public Angle Angle { get; set; }
         public DateTime LastBallMovement { get; set; }
-        public bool IsAtStartPosition { get; set; }      
+        public bool IsAtStartPosition { get; set; }
+        public byte LastXPosition { get; set; }
+        public byte LastYPosition { get; set; }
+
 
         public Ball(){
             Height = 1;
@@ -27,6 +30,9 @@ namespace Pong.Objects
 
         public override void Draw(){
             Console.ForegroundColor = ConsoleColor.Green;
+            Console.SetCursorPosition(LastXPosition, LastYPosition);
+            Console.Write(" ");
+
             for (var i = 0; i < Width; i++){
                 Console.SetCursorPosition(XStartValue + i, YStartValue);
                 Console.WriteLine("o");

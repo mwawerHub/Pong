@@ -16,7 +16,7 @@ namespace Pong
                 var key = (Console.KeyAvailable) ? Console.ReadKey(true).Key : 0;
                 Update.UpdateAll(key);
                 if (State.ScreenNeedsRefresh){
-                    Console.Clear();
+                    //Console.Clear();
                     Draw.DrawAll();
                 }
                 State.ScreenNeedsRefresh = false;

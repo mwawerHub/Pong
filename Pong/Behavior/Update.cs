@@ -14,7 +14,12 @@ namespace Pong.Behavior
         }
 
         private static void UpdateBallPosition(){
-            if (Ball.CanMove()) Ball.Move();
+            if (Ball.CanMove()){
+                Ball.LastXPosition = Ball.XStartValue;
+                Ball.LastYPosition = Ball.YStartValue;
+                Ball.Move();
+            }
+
             if (CheckPosition.HasHitPlayer(Player1, Ball)){
                 Ball.ChangeDirection();
                 Ball.SetAngle(Player1.YStartValue);
