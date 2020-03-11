@@ -10,16 +10,16 @@ namespace Pong
     {
         static void Main(string[] args)
         {
+            Console.CursorVisible = false;
             Initialize.InitializeGame();
             while (true){
                 Thread.Sleep(10);
                 var key = (Console.KeyAvailable) ? Console.ReadKey(true).Key : 0;
                 Update.UpdateAll(key);
-                if (State.ScreenNeedsRefresh){
-                    //Console.Clear();
-                    Draw.DrawAll();
-                }
-                State.ScreenNeedsRefresh = false;
+                if(State.ScreenNeedsRedraw) Console.Clear();
+                Draw.DrawAll();
+                State.ScreenNeedsRedraw = false;
+                State.PlayerNeedsRedraw = false;
             }
         }
     }

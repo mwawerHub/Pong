@@ -15,9 +15,6 @@ namespace Pong.Objects
         public Angle Angle { get; set; }
         public DateTime LastBallMovement { get; set; }
         public bool IsAtStartPosition { get; set; }
-        public byte LastXPosition { get; set; }
-        public byte LastYPosition { get; set; }
-
 
         public Ball(){
             Height = 1;

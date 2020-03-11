@@ -8,6 +8,8 @@ namespace Pong.Abstracts
         public byte Height { get; set; }
         public byte XStartValue { get; set; }
         public byte YStartValue { get; set; }
+        public byte LastXPosition { get; set; }
+        public byte LastYPosition { get; set; }
 
         public abstract void Draw();
 

@@ -9,14 +9,16 @@ namespace Pong.Behavior
 
         private static void UpdatePlayerPosition(ConsoleKey key){
             if (key == 0) return;
+            UpdateLastPosition(Player1);
+            UpdateLastPosition(Player2);
             Player1.Move(key);
             Player2.Move(key);
+            State.PlayerNeedsRedraw = true;
         }
 
         private static void UpdateBallPosition(){
             if (Ball.CanMove()){
-                Ball.LastXPosition = Ball.XStartValue;
-                Ball.LastYPosition = Ball.YStartValue;
+                UpdateLastPosition(Ball);
                 Ball.Move();
             }
 
@@ -55,6 +57,11 @@ namespace Pong.Behavior
             }
         }
 
+        private static void UpdateLastPosition(Shape shape){
+            shape.LastXPosition = shape.XStartValue;
+            shape.LastYPosition = shape.YStartValue;
+        }
+
         private static void ResetBallPosition(){
             Ball.XStartValue = (Board.BoardWidth + Board.BoardXMargin ) / 2;
             Ball.YStartValue = (Board.BoardHeight + Board.BoardYMargin) / 2;
@@ -64,7 +71,6 @@ namespace Pong.Behavior
         public static void UpdateAll(ConsoleKey key){
             UpdatePlayerPosition(key);
             UpdateBallPosition();
-            State.ScreenNeedsRefresh = true;
         }
     }
 }

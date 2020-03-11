@@ -1,4 +1,5 @@
 ﻿using System;
+using Pong.Globals;
 
 namespace Pong.Behavior
 {
@@ -7,20 +8,19 @@ namespace Pong.Behavior
         public static void DrawAll(){
             Console.ForegroundColor = ConsoleColor.White;
             try{
-                //Player1.Draw();
-                //Player2.Draw();
-                //BottomWall.Draw();
-                //TopWall.Draw();
+                if (State.ScreenNeedsRedraw){
+                    BottomWall.Draw();
+                    TopWall.Draw();
+                }
+                if (State.PlayerNeedsRedraw){
+                    Player1.Draw();
+                    Player2.Draw();    
+                }
                 Ball.Draw();
             }
             catch (Exception e){
                 throw new InvalidOperationException("You need to use InitializeGame method before. " + e.Message);
             }
-
         }
-
-
-
-
     }
 }

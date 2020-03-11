@@ -2,6 +2,13 @@
 {
     public class State
     {
-        public static bool ScreenNeedsRefresh = true;
+        public static bool ScreenNeedsRedraw { get; set; }
+        public static bool PlayerNeedsRedraw { get; set; }
+
+        static State()
+        {
+            ScreenNeedsRedraw = true;
+            PlayerNeedsRedraw = true;
+        }
     }
 }
