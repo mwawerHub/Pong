@@ -7,7 +7,9 @@ namespace Pong.Enums
     public enum Angle : byte
     {
         Angle30,
-        Angle45,
-        Angle90
+        Angle60,
+        Angle90,
+        Angle120,
+        Angle150
     }
 }

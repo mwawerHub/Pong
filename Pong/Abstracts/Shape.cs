@@ -13,12 +13,12 @@ namespace Pong.Abstracts
 
         public abstract void Draw();
 
-        public void MoveLeft(byte x = 1) { XStartValue--; }
+        public void MoveLeft(byte x = 1) { XStartValue -= x; }
 
-        public void MoveRight(byte x = 1) { XStartValue++; }
+        public void MoveRight(byte x = 1) { XStartValue += x; }
 
-        public void MoveUp(byte y = 1) { YStartValue--; }
+        public void MoveUp(byte y = 1) { YStartValue -= y; }
 
-        public void MoveDown(byte y = 1){ YStartValue++; }
+        public void MoveDown(byte y = 1) { YStartValue += y; }
     }
 }
