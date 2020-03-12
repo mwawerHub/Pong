@@ -5,7 +5,7 @@ namespace Pong.Objects
     public class BottomWall : Wall
     {
         public BottomWall() : base(){
-            YStartValue = Board.BoardHeight;
+            YStartValue = Board.Height;
         }
     }
 }

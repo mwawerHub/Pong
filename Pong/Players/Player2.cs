@@ -19,8 +19,8 @@ namespace Pong.Players
         public Player2(){
             Width = 5;
             Height = 1;
-            XStartValue = LastXPosition = Board.BoardWidth;
-            YStartValue = LastYPosition = (Board.BoardHeight - 1) / 2 + 3;
+            XStartValue = LastXPosition = Board.Width;
+            YStartValue = LastYPosition = (Board.Height - 1) / 2 + 3;
         }
     }
 }

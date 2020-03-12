@@ -7,7 +7,8 @@ namespace Pong.Behavior
     public class Update : Initialize
     {
 
-        private static void UpdatePlayerPosition(ConsoleKey key){
+        private static void UpdatePlayerPosition(ConsoleKey key)
+        {
             if (key == 0) return;
             UpdateLastPosition(Player1);
             UpdateLastPosition(Player2);
@@ -16,41 +17,48 @@ namespace Pong.Behavior
             State.PlayerNeedsRedraw = true;
         }
 
-        private static void UpdateBallPosition(){
-            if (Ball.CanMove()){
+        private static void UpdateBallPosition()
+        {
+            if (Ball.CanMove())
+            {
                 UpdateLastPosition(Ball);
                 Ball.Move();
             }
 
-            if (CheckPosition.HasHitPlayer(Player1, Ball)){
-                Ball.SetAngle(Player1.YStartValue);
+            if (CheckPosition.HasHitPlayer(Player1, Ball))
+            {
+                Ball.SetAngleAfterPlayerHit(Player1.YStartValue);
                 Ball.ChangeDirection();
                 Ball.Move();
                 return;
             }
 
-            if (CheckPosition.HasHitPlayer(Player2, Ball)){
-                Ball.SetAngle(Player2.YStartValue);
+            if (CheckPosition.HasHitPlayer(Player2, Ball))
+            {
+                Ball.SetAngleAfterPlayerHit(Player2.YStartValue);
                 Ball.ChangeDirection();
                 Ball.Move();
                 return;
             }
 
-            if (CheckPosition.HasPlayer1Scored(Ball.XStartValue)){
+            if (CheckPosition.HasPlayer1Scored(Ball.XStartValue))
+            {
                 ResetBallPosition();
                 Ball.ChangeDirection();
                 Ball.Move();
                 return;
             }
 
-            if (CheckPosition.HasPlayer2Scored(Ball.XStartValue)){
+            if (CheckPosition.HasPlayer2Scored(Ball.XStartValue))
+            {
                 ResetBallPosition();
                 Ball.ChangeDirection();
                 Ball.Move();
                 return;
             }
 
-            if (CheckPosition.HasHitWall(Ball.YStartValue)){
+            if (CheckPosition.HasHitWall(Ball.YStartValue))
+            {
                 //Ball.ChangeDirection();
                 //Ball.Move();
                 ResetBallPosition();
@@ -58,18 +66,21 @@ namespace Pong.Behavior
             }
         }
 
-        private static void UpdateLastPosition(Shape shape){
+        private static void UpdateLastPosition(Shape shape)
+        {
             shape.LastXPosition = shape.XStartValue;
             shape.LastYPosition = shape.YStartValue;
         }
 
-        private static void ResetBallPosition(){
-            Ball.XStartValue = (Board.BoardWidth + Board.BoardXMargin ) / 2;
-            Ball.YStartValue = (Board.BoardHeight + Board.BoardYMargin) / 2;
+        private static void ResetBallPosition()
+        {
+            Ball.XStartValue = (Board.Width + Board.XMargin) / 2;
+            Ball.YStartValue = (Board.Height + Board.YMargin) / 2;
             Ball.IsAtStartPosition = true;
         }
 
-        public static void UpdateAll(ConsoleKey key){
+        public static void UpdateAll(ConsoleKey key)
+        {
             UpdatePlayerPosition(key);
             UpdateBallPosition();
         }

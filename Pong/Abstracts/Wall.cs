@@ -14,8 +14,8 @@ namespace Pong.Abstracts
         }
 
         protected Wall(){
-            XStartValue = Board.BoardXMargin;
-            Width = (byte)(Board.BoardWidth - XStartValue);
+            XStartValue = Board.XMargin;
+            Width = (byte)(Board.Width - XStartValue);
             Height = 1;
         }
     }

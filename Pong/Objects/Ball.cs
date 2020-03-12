@@ -21,8 +21,8 @@ namespace Pong.Objects
         {
             Height = 1;
             Width = 1;
-            XStartValue = (Board.BoardWidth + Board.BoardXMargin) / 2;
-            YStartValue = (Board.BoardHeight + Board.BoardYMargin) / 2;
+            XStartValue = (Board.Width + Board.XMargin) / 2;
+            YStartValue = (Board.Height + Board.YMargin) / 2;
             IsAtStartPosition = true;
             ChangeDirection();
         }
@@ -46,7 +46,17 @@ namespace Pong.Objects
             return ((DateTime.Now - LastBallMovement).TotalMilliseconds > MovementSpeed);
         }
 
-        public void SetAngle(int y)
+        public void SetAngleAfterWallHit(byte x, byte y)
+        {
+            if (y == Board.YMargin || y == Board.Height)
+                if (x <= Board.Width * 0.25) Angle = Angle.Angle30;
+                else if (x > Board.Width * 0.25 && x < Board.Width * 0.5) Angle = Angle.Angle60;
+                else if (x == (byte)(Board.Width * 0.5)) Angle = Angle.Angle90;
+                else if (x < Board.Width * 0.75 && x > (Board.Width * 0.5)) Angle = Angle.Angle120;
+                else if (x >= Board.Width * 0.75) Angle = Angle.Angle150;
+        }
+
+        public void SetAngleAfterPlayerHit(byte y)
         {
             Angle = (YStartValue - y) switch
             {
