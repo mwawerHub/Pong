@@ -17,40 +17,38 @@ namespace Pong.Behavior
             State.PlayerNeedsRedraw = true;
         }
 
-        private static void UpdateBallPosition()
-        {
-            if (Ball.CanMove())
-            {
+        private static void UpdateBallPosition(){
+            if (Ball.CanMove()){
                 UpdateLastPosition(Ball);
                 Ball.Move();
             }
 
-            if (CheckPosition.HasHitPlayer(Player1, Ball))
-            {
+            if (CheckPosition.HasHitPlayer(Player1, Ball)){
+                State.HasHitWall = false;
+                State.HasHitPlayer = true;
                 Ball.SetAngleAfterPlayerHit(Player1.YStartValue);
                 Ball.ChangeDirection();
                 Ball.Move();
                 return;
             }
 
-            if (CheckPosition.HasHitPlayer(Player2, Ball))
-            {
+            if (CheckPosition.HasHitPlayer(Player2, Ball)){
+                State.HasHitWall = false;
+                State.HasHitPlayer = true;
                 Ball.SetAngleAfterPlayerHit(Player2.YStartValue);
                 Ball.ChangeDirection();
                 Ball.Move();
                 return;
             }
 
-            if (CheckPosition.HasPlayer1Scored(Ball.XStartValue))
-            {
+            if (CheckPosition.HasPlayer1Scored(Ball.XStartValue)){
                 ResetBallPosition();
                 Ball.ChangeDirection();
                 Ball.Move();
                 return;
             }
 
-            if (CheckPosition.HasPlayer2Scored(Ball.XStartValue))
-            {
+            if (CheckPosition.HasPlayer2Scored(Ball.XStartValue)){
                 ResetBallPosition();
                 Ball.ChangeDirection();
                 Ball.Move();
@@ -59,28 +57,27 @@ namespace Pong.Behavior
 
             if (CheckPosition.HasHitWall(Ball.YStartValue))
             {
-                //Ball.ChangeDirection();
-                //Ball.Move();
-                ResetBallPosition();
+                State.HasHitWall = true;
+                State.HasHitPlayer = false;
+                Ball.SetAngleAfterWallHit(Ball.XStartValue, Ball.YStartValue);
+                Ball.ChangeDirection();
+                Ball.Move();
                 return;
             }
         }
 
-        private static void UpdateLastPosition(Shape shape)
-        {
+        private static void UpdateLastPosition(Shape shape){
             shape.LastXPosition = shape.XStartValue;
             shape.LastYPosition = shape.YStartValue;
         }
 
-        private static void ResetBallPosition()
-        {
+        private static void ResetBallPosition(){
             Ball.XStartValue = (Board.Width + Board.XMargin) / 2;
             Ball.YStartValue = (Board.Height + Board.YMargin) / 2;
             Ball.IsAtStartPosition = true;
         }
 
-        public static void UpdateAll(ConsoleKey key)
-        {
+        public static void UpdateAll(ConsoleKey key){
             UpdatePlayerPosition(key);
             UpdateBallPosition();
         }
