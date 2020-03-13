@@ -4,11 +4,13 @@
     {
         public static bool ScreenNeedsRedraw { get; set; }
         public static bool PlayerNeedsRedraw { get; set; }
+        public static bool HasHitWall { get; set; }
 
-        static State()
-        {
+
+        static State(){
             ScreenNeedsRedraw = true;
             PlayerNeedsRedraw = true;
+            HasHitWall = false;
         }
     }
 }

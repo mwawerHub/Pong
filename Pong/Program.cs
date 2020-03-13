@@ -11,6 +11,8 @@ namespace Pong
         static void Main(string[] args)
         {
             Console.CursorVisible = false;
+            Console.BufferHeight = 111;
+            Console.BufferWidth = 111;
             Console.WindowHeight = 111;
             Console.WindowWidth = 111;
             Initialize.InitializeGame();
