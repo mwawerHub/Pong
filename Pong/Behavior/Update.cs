@@ -6,9 +6,7 @@ namespace Pong.Behavior
 {
     public class Update : Initialize
     {
-
-        private static void UpdatePlayerPosition(ConsoleKey key)
-        {
+        private static void UpdatePlayerPosition(ConsoleKey key){
             if (key == 0) return;
             UpdateLastPosition(Player1);
             UpdateLastPosition(Player2);
@@ -25,7 +23,6 @@ namespace Pong.Behavior
 
             if (CheckPosition.HasHitPlayer(Player1, Ball)){
                 State.HasHitWall = false;
-                State.HasHitPlayer = true;
                 Ball.SetAngleAfterPlayerHit(Player1.YStartValue);
                 Ball.ChangeDirection();
                 Ball.Move();
@@ -34,7 +31,6 @@ namespace Pong.Behavior
 
             if (CheckPosition.HasHitPlayer(Player2, Ball)){
                 State.HasHitWall = false;
-                State.HasHitPlayer = true;
                 Ball.SetAngleAfterPlayerHit(Player2.YStartValue);
                 Ball.ChangeDirection();
                 Ball.Move();
@@ -55,14 +51,11 @@ namespace Pong.Behavior
                 return;
             }
 
-            if (CheckPosition.HasHitWall(Ball.YStartValue))
-            {
+            if (CheckPosition.HasHitWall(Ball.YStartValue)){
                 State.HasHitWall = true;
-                State.HasHitPlayer = false;
                 Ball.SetAngleAfterWallHit(Ball.XStartValue, Ball.YStartValue);
                 Ball.ChangeDirection();
                 Ball.Move();
-                return;
             }
         }
 
