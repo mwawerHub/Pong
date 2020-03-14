@@ -2,6 +2,7 @@ using Pong.Behavior;
 using Pong.Globals;
 using System;
 using System.Threading;
+using Pong.Behavior.Update;
 
 namespace Pong
 {
