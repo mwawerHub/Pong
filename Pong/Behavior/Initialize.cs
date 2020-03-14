@@ -18,12 +18,12 @@ namespace Pong.Behavior
 
             Console.CursorVisible = false;
             try{
-                Console.SetWindowSize(1, 1);
-                Console.SetBufferSize(500, 500);
                 ConsoleHelper.SetConsoleFont();
-                Console.SetBufferSize(150, 150);
-                Console.SetWindowPosition(20, 20);
+                Console.SetWindowSize(1, 1);
+                Console.SetWindowPosition(0,0);
+                Console.SetBufferSize(111, 111);
                 Console.SetWindowSize(111, 111);
+                Console.Title = "Pong";
             }
             catch (Exception e){
                 Console.WriteLine(e);

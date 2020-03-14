@@ -53,14 +53,23 @@ namespace Pong.Objects
         }
 
         public void SetAngleAfterPlayerHit(byte y){
-            Angle = (YStartValue - y) switch{
-                0 => Angle.Angle30,
-                1 => Angle.Angle60,
-                2 => Angle.Angle90,
-                3 => Angle.Angle120,
-                4 => Angle.Angle150,
-                _ => throw new InvalidEnumArgumentException("Given y value out of player range")
-            };
+                switch (YStartValue - y){
+                case 0:
+                    Angle = Angle.Angle30;
+                    break;
+                case 1:
+                    Angle = Angle.Angle60;
+                    break;
+                case 2:
+                    Angle = Angle.Angle90;
+                    break;
+                case 3:
+                    Angle = Angle.Angle120;
+                    break;
+                case 4:
+                    Angle = Angle.Angle150;
+                    break;
+            }
         }
 
         public void ChangeDirection(){
