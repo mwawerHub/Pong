@@ -10,16 +10,16 @@ namespace Pong.Behavior
         }
 
         public static bool HasPlayer1Scored(int x){
-            return (x >= Board.Width);
+            return (x > Board.Width);
         }
 
         public static bool HasPlayer2Scored(int x){
-            return (x <= Board.XMargin);
+            return (x < Board.XMargin);
         }
 
         public static bool HasHitPlayer(Shape player, Ball ball){
             return (ball.XStartValue == player.XStartValue && ball.YStartValue >= player.YStartValue &&
-                    ball.YStartValue < player.YStartValue + 5);
+                    ball.YStartValue <= player.YStartValue + 5);
         }
     }
 }

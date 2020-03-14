@@ -20,69 +20,135 @@ namespace ObjectCollisionTests
             ball = new Ball();
         }
 
-        private void SetBallPositionForPlayer1(sbyte x, sbyte y){
-            ball.XStartValue = (byte)(player1.XStartValue + x);
-            ball.YStartValue = (byte)(player1.YStartValue + y);
+        private void SetBallPositionForPlayer(sbyte x, sbyte y, ConsolePlayer player){
+            ball.XStartValue = (byte)(player.XStartValue + x);
+            ball.YStartValue = (byte)(player.YStartValue + y);
         }
 
-        private void SetBallPositionForPlayer2(byte x, byte y){
-            ball.XStartValue = (byte)(player2.XStartValue + x);
-            ball.YStartValue = (byte)(player2.YStartValue + y);
-        }
+        #region PLAYER1
 
         [Test]
-        public void HasHitPlayerTest1(){
-            SetBallPositionForPlayer1(0, 0);
+        public void HasHitPlayer1Test1(){
+            SetBallPositionForPlayer(0, 0, player1);
             Assert.IsTrue(CheckPosition.HasHitPlayer(player1,ball));
         }
 
         [Test]
-        public void HasHitPlayerTest2(){
-            SetBallPositionForPlayer1(0, 1);
+        public void HasHitPlayer1Test2(){
+            SetBallPositionForPlayer(0, 1, player1);
             Assert.IsTrue(CheckPosition.HasHitPlayer(player1, ball));
         }
 
         [Test]
-        public void HasHitPlayerTest3(){
-            SetBallPositionForPlayer1(0, 2);
+        public void HasHitPlayer1Test3(){
+            SetBallPositionForPlayer(0, 2, player1);
             Assert.IsTrue(CheckPosition.HasHitPlayer(player1, ball));
         }
 
         [Test]
-        public void HasHitPlayerTest4(){
-            SetBallPositionForPlayer1(0, 3);
+        public void HasHitPlayer1Test4(){
+            SetBallPositionForPlayer(0, 3, player1);
             Assert.IsTrue(CheckPosition.HasHitPlayer(player1, ball));
         }
 
         [Test]
-        public void HasHitPlayerTest5(){
-            SetBallPositionForPlayer1(0, 4);
+        public void HasHitPlayer1Test5(){
+            SetBallPositionForPlayer(0, 4, player1);
             Assert.IsTrue(CheckPosition.HasHitPlayer(player1, ball));
         }
 
         [Test]
-        public void HasHitPlayerTest6(){
-            SetBallPositionForPlayer1(0, 5);
+        public void HasHitPlayer1Test6(){
+            SetBallPositionForPlayer(0, 5, player1);
             Assert.IsTrue(CheckPosition.HasHitPlayer(player1, ball));
         }
 
         [Test]
-        public void HasHitPlayerTest7(){
-            SetBallPositionForPlayer1(0, -1);
+        public void HasHitPlayer1Test7(){
+            SetBallPositionForPlayer(0, -1, player1);
             Assert.IsFalse(CheckPosition.HasHitPlayer(player1, ball));
         }
 
         [Test]
-        public void HasHitPlayerTest8(){
-            SetBallPositionForPlayer1(1, 0);
+        public void HasHitPlayer1Test8(){
+            SetBallPositionForPlayer(1, 0, player1);
             Assert.IsFalse(CheckPosition.HasHitPlayer(player1, ball));
         }
 
         [Test]
-        public void HasHitPlayerTest9(){
-            SetBallPositionForPlayer1(-1, 0);
+        public void HasHitPlayer1Test9(){
+            SetBallPositionForPlayer(-1, 0, player1);
             Assert.IsFalse(CheckPosition.HasHitPlayer(player1, ball));
         }
+
+        #endregion
+
+        #region PLAYER2
+
+        [Test]
+        public void HasHitPlayer2Test1()
+        {
+            SetBallPositionForPlayer(0, 0, player2);
+            Assert.IsTrue(CheckPosition.HasHitPlayer(player2, ball));
+        }
+
+        [Test]
+        public void HasHitPlayer2Test2()
+        {
+            SetBallPositionForPlayer(0, 1, player2);
+            Assert.IsTrue(CheckPosition.HasHitPlayer(player2, ball));
+        }
+
+        [Test]
+        public void HasHitPlayer2Test3()
+        {
+            SetBallPositionForPlayer(0, 2, player2);
+            Assert.IsTrue(CheckPosition.HasHitPlayer(player2, ball));
+        }
+
+        [Test]
+        public void HasHitPlayer2Test4()
+        {
+            SetBallPositionForPlayer(0, 3, player2);
+            Assert.IsTrue(CheckPosition.HasHitPlayer(player2, ball));
+        }
+
+        [Test]
+        public void HasHitPlayer2Test5()
+        {
+            SetBallPositionForPlayer(0, 4, player2);
+            Assert.IsTrue(CheckPosition.HasHitPlayer(player2, ball));
+        }
+
+        [Test]
+        public void HasHitPlayer2Test6()
+        {
+            SetBallPositionForPlayer(0, 5, player2);
+            Assert.IsTrue(CheckPosition.HasHitPlayer(player2, ball));
+        }
+
+        [Test]
+        public void HasHitPlayer2Test7()
+        {
+            SetBallPositionForPlayer(0, -1, player2);
+            Assert.IsFalse(CheckPosition.HasHitPlayer(player2, ball));
+        }
+
+        [Test]
+        public void HasHitPlayer2Test8()
+        {
+            SetBallPositionForPlayer(1, 0, player2);
+            Assert.IsFalse(CheckPosition.HasHitPlayer(player2, ball));
+        }
+
+        [Test]
+        public void HasHitPlayer2Test9()
+        {
+            SetBallPositionForPlayer(-1, 0, player2);
+            Assert.IsFalse(CheckPosition.HasHitPlayer(player2, ball));
+        }
+
+        #endregion
 
     }
 }
