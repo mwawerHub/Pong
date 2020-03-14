@@ -1,7 +1,7 @@
-﻿using System;
+﻿using NAudio.Wave;
+using Pong.Audio;
 using System.IO;
 using System.Reflection;
-using NAudio.Wave;
 
 namespace Pong.Behavior
 {
@@ -12,17 +12,16 @@ namespace Pong.Behavior
 
         public string SongToPlay { get; set; }
 
-        public BackgroundMusic()
-        {
+        public BackgroundMusic(){
             SongToPlay = ExecutablePath + "\\Sounds\\backgroundMusic.wav";
         }
 
-        public void Play()
-        {
-            var waveReader = new WaveFileReader(SongToPlay);
-            var output = new DirectSoundOut();
-            output.Init(new WaveChannel32(waveReader));
-            output.Play();
+        public void Play(){
+            var reader = new WaveFileReader(SongToPlay);
+            var MediaPlayer = new DirectSoundOut();
+            var loop = new LoopStream(reader);
+            MediaPlayer.Init(new WaveChannel32(loop));
+            MediaPlayer.Play();
         }
     }
 }
