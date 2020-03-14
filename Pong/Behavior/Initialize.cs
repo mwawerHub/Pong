@@ -1,7 +1,7 @@
-﻿using System;
-using Pong.Enums;
-using Pong.Objects;
+﻿using Pong.Objects;
 using Pong.Players;
+using Pong.PrepareConsole;
+using System;
 
 namespace Pong.Behavior
 {
@@ -15,6 +15,21 @@ namespace Pong.Behavior
 
 
         public static void InitializeGame(){
+
+            Console.CursorVisible = false;
+            try{
+                Console.SetWindowSize(1, 1);
+                Console.SetBufferSize(500, 500);
+                ConsoleHelper.SetConsoleFont();
+                Console.SetBufferSize(150, 150);
+                Console.SetWindowPosition(20, 20);
+                Console.SetWindowSize(111, 111);
+            }
+            catch (Exception e){
+                Console.WriteLine(e);
+                Console.ReadKey();
+            }
+
             Player1 = new Player1();
             Player2 = new Player2();
             BottomWall = new BottomWall();

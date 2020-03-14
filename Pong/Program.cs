@@ -1,7 +1,7 @@
-﻿using System;
-using System.Threading;
-using Pong.Behavior;
+﻿using Pong.Behavior;
 using Pong.Globals;
+using System;
+using System.Threading;
 
 namespace Pong
 {
@@ -22,6 +22,7 @@ namespace Pong
                 Update.UpdateAll(key);
                 if(State.ScreenNeedsRedraw) Console.Clear();
                 Draw.DrawAll();
+
                 State.ScreenNeedsRedraw = false;
                 State.PlayerNeedsRedraw = false;
             }
