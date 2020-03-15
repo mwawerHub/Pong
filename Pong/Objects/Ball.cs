@@ -52,24 +52,9 @@ namespace Pong.Objects
                 else if (x >= Board.Width * 0.75) Angle = Angle.Angle150;
         }
 
-        public void SetAngleAfterPlayerHit(byte y){
-                switch (YStartValue - y){
-                case 0:
-                    Angle = Angle.Angle30;
-                    break;
-                case 1:
-                    Angle = Angle.Angle60;
-                    break;
-                case 2:
-                    Angle = Angle.Angle90;
-                    break;
-                case 3:
-                    Angle = Angle.Angle120;
-                    break;
-                case 4:
-                    Angle = Angle.Angle150;
-                    break;
-            }
+        public void SetAngleAfterPlayerHit(byte y)
+        {
+            Angle = (Angle) (YStartValue - y);
         }
 
         public void ChangeDirection(){
