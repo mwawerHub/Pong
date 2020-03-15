@@ -5,7 +5,7 @@ using Pong.Players;
 
 namespace ObjectCollisionTests
 {
-    public class HasBallCorrectAngleTests
+    public class HasBallCorrectAngleAfterPlayerHitTests
     {
         public Ball ball;
         public Player1 player1;

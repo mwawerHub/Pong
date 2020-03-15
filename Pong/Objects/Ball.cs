@@ -1,9 +1,7 @@
-﻿using System;
-using System.ComponentModel;
-using System.Diagnostics;
-using Pong.Abstracts;
+﻿using Pong.Abstracts;
 using Pong.Enums;
 using Pong.Globals;
+using System;
 
 namespace Pong.Objects
 {
@@ -45,39 +43,22 @@ namespace Pong.Objects
 
         public void SetAngleAfterWallHit(byte x, byte y){
             if (y == Board.YMargin || y == Board.Height)
-                if (x <= Board.Width * 0.25) Angle = Angle.Angle30;
-                else if (x > Board.Width * 0.25 && x < Board.Width * 0.5) Angle = Angle.Angle60;
-                else if (x == (byte)(Board.Width * 0.5)) Angle = Angle.Angle90;
-                else if (x < Board.Width * 0.75 && x > (Board.Width * 0.5)) Angle = Angle.Angle120;
-                else if (x >= Board.Width * 0.75) Angle = Angle.Angle150;
+                if (x <= (Board.Width + Board.XMargin) * 0.25) Angle = Angle.Angle30;
+                else if (x > (Board.Width + Board.XMargin) * 0.25 && x < (Board.Width + Board.XMargin) * 0.5) Angle = Angle.Angle60;
+                else if (x == (byte)((Board.Width + Board.XMargin) * 0.5)) Angle = Angle.Angle90;
+                else if (x < (Board.Width + Board.XMargin) * 0.75 && x > ((Board.Width + Board.XMargin) * 0.5)) Angle = Angle.Angle120;
+                else if (x >= (Board.Width + Board.XMargin) * 0.75) Angle = Angle.Angle150;
         }
 
-        public void SetAngleAfterPlayerHit(byte y){
-                switch (YStartValue - y){
-                case 0:
-                    Angle = Angle.Angle30;
-                    break;
-                case 1:
-                    Angle = Angle.Angle60;
-                    break;
-                case 2:
-                    Angle = Angle.Angle90;
-                    break;
-                case 3:
-                    Angle = Angle.Angle120;
-                    break;
-                case 4:
-                    Angle = Angle.Angle150;
-                    break;
-            }
+        public void SetAngleAfterPlayerHit(byte y)
+        {
+            Angle = (Angle) (YStartValue - y);
         }
 
         public void ChangeDirection(){
             if (IsAtStartPosition){
-                Direction = Direction.E;
-                Angle = Angle.Angle90;
-                //Direction = (Direction)Rng.Next(0, 5);
-                //Angle = (Angle)Rng.Next(0, 4);
+                Direction = (Direction)Rng.Next(0, 5);
+                Angle = (Angle)Rng.Next(0, 4);
             }
             else{
                 if (Angle == Angle.Angle30){
