@@ -16,4 +16,8 @@
     <ProjectReference Include="..\Pong\Pong.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="BallChangeDirectionTests\AfterPlayerHit\" />
+  </ItemGroup>
+
 </Project>

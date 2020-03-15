@@ -136,7 +136,7 @@ namespace Pong.Objects
                 else if (Angle == Angle.Angle120){
                     switch (Direction){
                         case Direction.NE:
-                            Direction = (State.HasHitWall) ? Direction.SW : Direction.SE;
+                            Direction = (State.HasHitWall) ? Direction.SE : Direction.SW;
                             break;
                         case Direction.E:
                             Direction = Direction.SW;
@@ -160,7 +160,7 @@ namespace Pong.Objects
                 else if (Angle == Angle.Angle150){
                     switch (Direction){
                         case Direction.NE:
-                            Direction = (State.HasHitWall) ? Direction.SW : Direction.SE;
+                            Direction = (State.HasHitWall) ? Direction.SE : Direction.SW;
                             break;
                         case Direction.E:
                             Direction = Direction.SW;
