@@ -1,14 +1,30 @@
 ﻿using Pong.Abstracts;
 using Pong.Globals;
 
-namespace Pong.Behavior.Update
-{
+namespace Pong.Behavior.Update {
     public class UpdateBall : Update
     {
         public static void UpdateBallPosition(){
-            if (Ball.CanMove()){
-                UpdateLastPosition(Ball);
-                Ball.Move();
+            if (!Ball.CanMove()) return;
+            UpdateLastPosition(Ball);
+
+            if (CheckPosition.HasHitWall(Ball.YStartValue)){
+                State.HasHitWall = true;
+                Ball.SetAngleAfterWallHit(Ball.XStartValue, Ball.YStartValue);
+                MoveBall();
+                return;
+            }
+
+            if (CheckPosition.HasPlayer1Scored(Ball.XStartValue)) {
+                ResetBallPosition();
+                MoveBall();
+                return;
+            }
+
+            if (CheckPosition.HasPlayer2Scored(Ball.XStartValue)) {
+                ResetBallPosition();
+                MoveBall();
+                return;
             }
 
             if (CheckPosition.HasHitPlayer(Player1, Ball)){
@@ -21,22 +37,7 @@ namespace Pong.Behavior.Update
                 return;
             }
 
-            if (CheckPosition.HasPlayer1Scored(Ball.XStartValue)){
-                ResetBallPosition();
-                MoveBall();
-                return;
-            }
-
-            if (CheckPosition.HasPlayer2Scored(Ball.XStartValue)){
-                ResetBallPosition();
-                MoveBall();
-                return;
-            }
-
-            if (!CheckPosition.HasHitWall(Ball.YStartValue)) return;
-            State.HasHitWall = true;
-            Ball.SetAngleAfterWallHit(Ball.XStartValue, Ball.YStartValue);
-            MoveBall();
+            Ball.Move();
         }
 
         private static void PlayerHit(ConsolePlayer player){
