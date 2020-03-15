@@ -21,7 +21,6 @@ namespace Pong
                     Update.UpdateAll(key);
                     if (State.ScreenNeedsRedraw) Console.Clear();
                     Draw.DrawAll();
-
                     State.ScreenNeedsRedraw = false;
                     State.PlayerNeedsRedraw = false;
                 }
