@@ -18,7 +18,7 @@ namespace Pong.Behavior
         }
 
         public static bool HasHitPlayer(Shape player, Ball ball){
-            return (ball.XStartValue == player.XStartValue -1 || ball.XStartValue == player.XStartValue + 1
+            return ((ball.XStartValue == player.XStartValue -1 || ball.XStartValue == player.XStartValue + 1)
                 && ball.YStartValue >= player.YStartValue - 1
                 && ball.YStartValue <= player.YStartValue + 6);
         }

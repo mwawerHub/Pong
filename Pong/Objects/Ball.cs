@@ -2,14 +2,16 @@
 using Pong.Enums;
 using Pong.Globals;
 using System;
+using NAudio.MediaFoundation;
 
 namespace Pong.Objects
 {
     public class Ball : Shape
     {
-        public const byte MovementSpeed = 50;
+        public const byte MovementSpeed = 25;
 
         private static readonly Random Rng = new Random();
+        private bool _diagonal = false;
 
         public Direction Direction { get; set; }
         public Angle Angle { get; set; }
@@ -59,8 +61,8 @@ namespace Pong.Objects
 
         public void ChangeDirection(){
             if (IsAtStartPosition){
-                Direction = (Direction)Rng.Next(0, 5);
                 Angle = (Angle)Rng.Next(0, 4);
+                Direction = (Angle == Angle.Angle90) ? Direction.E : (Direction)Rng.Next(0, 5);
             }
             else{
                 if (Angle == Angle.Angle30){
@@ -186,30 +188,69 @@ namespace Pong.Objects
             }
         }
 
+        private byte[] CalculateMovement()
+        {
+            switch (Angle)
+            {
+                case Angle.Angle30:
+                    return new byte[]{1,2};
+                case Angle.Angle60:
+                    return new byte[]{2,1};
+                case Angle.Angle90:
+                    return new byte[]{1,1};
+                case Angle.Angle120:
+                    return new byte[]{2,1};
+                case Angle.Angle150:
+                    return new byte[]{1,2};
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
         public void Move()
         {
+            var xModifier = CalculateMovement()[0];
+            var yModifier = CalculateMovement()[1];
+            _diagonal = !_diagonal;
+
             switch (Direction){
                 case Direction.NE:
-                    MoveUp();
-                    MoveRight();
+                    if (!_diagonal){
+                        MoveUp();
+                        MoveRight();
+                    }
+                    else if (xModifier == 2) MoveRight();
+                    else if (yModifier == 2) MoveUp(); 
                     break;
                 case Direction.E:
                     MoveRight();
                     break;
                 case Direction.SE:
-                    MoveDown();
-                    MoveRight();
+                    if (!_diagonal){
+                        MoveDown();
+                        MoveRight();
+                    }
+                    else if (xModifier == 2) MoveRight();
+                    else if (yModifier == 2) MoveDown();
                     break;
                 case Direction.SW:
-                    MoveDown();
-                    MoveLeft();
+                    if (!_diagonal){
+                        MoveDown();
+                        MoveLeft();
+                    }
+                    else if (xModifier == 2) MoveLeft();
+                    else if (yModifier == 2) MoveDown();
                     break;
                 case Direction.W:
                     MoveLeft();
                     break;
                 case Direction.NW:
-                    MoveUp();
-                    MoveLeft();
+                    if (!_diagonal){
+                        MoveUp();
+                        MoveLeft();
+                    }
+                    else if (xModifier == 2) MoveLeft();
+                    else if (yModifier == 2) MoveUp();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

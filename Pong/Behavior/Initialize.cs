@@ -23,8 +23,8 @@ using System;
                  ConsoleHelper.SetConsoleFont();
                  Console.SetWindowSize(1, 1);
                  Console.SetWindowPosition(0, 0);
-                 Console.SetBufferSize(111, 111);
-                 Console.SetWindowSize(111, 111);
+                 Console.SetBufferSize(91, 71);
+                 Console.SetWindowSize(91, 71);
                  Console.Title = "Pong";
              }
              catch (Exception e)

@@ -7,12 +7,15 @@ namespace Pong.Behavior.Update {
         public static void UpdateBallPosition(){
             if (!Ball.CanMove()) return;
             UpdateLastPosition(Ball);
+            if (Ball.YStartValue != Board.YMargin + 1 && Ball.YStartValue != Board.Height - 1) State.HasHitWall = false;
 
             if (CheckPosition.HasHitWall(Ball.YStartValue)){
-                State.HasHitWall = true;
-                Ball.SetAngleAfterWallHit(Ball.XStartValue, Ball.YStartValue);
-                MoveBall();
-                return;
+                if (!State.HasHitWall) {
+                    State.HasHitWall = true;
+                    Ball.SetAngleAfterWallHit(Ball.XStartValue, Ball.YStartValue);
+                    MoveBall();
+                    return;
+                }
             }
 
             if (CheckPosition.HasPlayer1Scored(Ball.XStartValue)) {
