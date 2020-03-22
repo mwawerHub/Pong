@@ -2,13 +2,11 @@
 using Pong.Enums;
 using Pong.Globals;
 using System;
-using NAudio.MediaFoundation;
 
-namespace Pong.Objects
-{
+namespace Pong.Objects {
     public class Ball : Shape
     {
-        public const byte MovementSpeed = 25;
+        public const byte MovementSpeed = 40;
 
         private static readonly Random Rng = new Random();
         private bool _diagonal = false;
@@ -32,10 +30,11 @@ namespace Pong.Objects
             Console.SetCursorPosition(LastXPosition, LastYPosition);
             Console.Write(" ");
 
-            for (var i = 0; i < Width; i++){
-                Console.SetCursorPosition(XStartValue + i, YStartValue);
-                Console.WriteLine("o");
-            }
+            if (State.BallNeedsRedraw)
+                for (var i = 0; i < Width; i++){
+                    Console.SetCursorPosition(XStartValue + i, YStartValue);
+                    Console.WriteLine("o");
+                }   
             Console.ForegroundColor = ConsoleColor.White;
         }
 
@@ -45,15 +44,14 @@ namespace Pong.Objects
 
         public void SetAngleAfterWallHit(byte x, byte y){
             if (y == Board.YMargin || y == Board.Height)
-                if (x <= (Board.Width + Board.XMargin) * 0.25) Angle = Angle.Angle30;
+                if (x <= (Board.Width + Board.XMargin) * 0.25) Angle = (Angle == Angle.Angle30) ? Angle.Angle60 : Angle.Angle30;
                 else if (x > (Board.Width + Board.XMargin) * 0.25 && x < (Board.Width + Board.XMargin) * 0.5) Angle = Angle.Angle60;
                 else if (x == (byte)((Board.Width + Board.XMargin) * 0.5)) Angle = Angle.Angle90;
                 else if (x < (Board.Width + Board.XMargin) * 0.75 && x > ((Board.Width + Board.XMargin) * 0.5)) Angle = Angle.Angle120;
-                else if (x >= (Board.Width + Board.XMargin) * 0.75) Angle = Angle.Angle150;
+                else if (x >= (Board.Width + Board.XMargin) * 0.75) Angle = (Angle == Angle.Angle150) ? Angle.Angle120 : Angle.Angle150;
         }
 
-        public void SetAngleAfterPlayerHit(byte y)
-        {
+        public void SetAngleAfterPlayerHit(byte y){
             if (YStartValue - y < 0) Angle = Angle.Angle30;
             else if (YStartValue - y > 4) Angle = Angle.Angle150;
             else Angle = (Angle) (YStartValue - y);
@@ -190,8 +188,7 @@ namespace Pong.Objects
 
         private byte[] CalculateMovement()
         {
-            switch (Angle)
-            {
+            switch (Angle){
                 case Angle.Angle30:
                     return new byte[]{1,2};
                 case Angle.Angle60:
@@ -218,17 +215,20 @@ namespace Pong.Objects
                     if (!_diagonal){
                         MoveUp();
                         MoveRight();
+                        State.BallNeedsRedraw = true;
                     }
                     else if (xModifier == 2) MoveRight();
-                    else if (yModifier == 2) MoveUp(); 
+                    else if (yModifier == 2) MoveUp();
                     break;
                 case Direction.E:
                     MoveRight();
+                    State.BallNeedsRedraw = true;
                     break;
                 case Direction.SE:
                     if (!_diagonal){
                         MoveDown();
                         MoveRight();
+                        State.BallNeedsRedraw = true;
                     }
                     else if (xModifier == 2) MoveRight();
                     else if (yModifier == 2) MoveDown();
@@ -237,17 +237,20 @@ namespace Pong.Objects
                     if (!_diagonal){
                         MoveDown();
                         MoveLeft();
+                        State.BallNeedsRedraw = true;
                     }
                     else if (xModifier == 2) MoveLeft();
                     else if (yModifier == 2) MoveDown();
                     break;
                 case Direction.W:
                     MoveLeft();
+                    State.BallNeedsRedraw = true;
                     break;
                 case Direction.NW:
                     if (!_diagonal){
                         MoveUp();
                         MoveLeft();
+                        State.BallNeedsRedraw = true;
                     }
                     else if (xModifier == 2) MoveLeft();
                     else if (yModifier == 2) MoveUp();

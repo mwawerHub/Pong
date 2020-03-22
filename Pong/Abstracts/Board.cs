@@ -1,5 +1,4 @@
-﻿namespace Pong.Abstracts
-{
+﻿namespace Pong.Abstracts {
     public abstract class Board
     {
         public const byte Width = 81;

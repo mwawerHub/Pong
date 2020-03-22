@@ -11,8 +11,11 @@ namespace Pong.Behavior
                 if (State.ScreenNeedsRedraw){
                     BottomWall.Draw();
                     TopWall.Draw();
+                    ScoreBoard.DrawScoreBoard();
+                    Player1.Draw();
+                    Player2.Draw();
                 }
-                if (State.PlayerNeedsRedraw){
+                else if (State.PlayerNeedsRedraw){
                     Player1.Draw();
                     Player2.Draw();    
                 }

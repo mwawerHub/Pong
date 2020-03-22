@@ -2,6 +2,7 @@ using Pong.Behavior;
 using Pong.Globals;
 using System;
 using System.Threading;
+using Pong.Abstracts;
 using Pong.Behavior.Update;
 
 namespace Pong
@@ -9,11 +10,14 @@ namespace Pong
 
     public class Program
     {
-        static void Main(string[] args)
-        {
+        static void Main(string[] args){
             try{
+                Introduction.DrawInstructions();
+                Console.ReadKey();
+
                 var bgMusic = new BackgroundMusic();
                 bgMusic.Play();
+
                 Initialize.InitializeGame();
                 while (true){
                     Thread.Sleep(10);
@@ -23,6 +27,8 @@ namespace Pong
                     Draw.DrawAll();
                     State.ScreenNeedsRedraw = false;
                     State.PlayerNeedsRedraw = false;
+                    State.BallNeedsRedraw = false;
+
                 }
             }
             catch (Exception e){

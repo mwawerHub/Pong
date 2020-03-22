@@ -3,15 +3,15 @@ using Pong.Players;
 using Pong.PrepareConsole;
 using System;
 
- namespace Pong.Behavior
- {
-     public class Initialize
+namespace Pong.Behavior {
+    public class Initialize
      {
          protected static Player1 Player1;
          protected static Player2 Player2;
          protected static BottomWall BottomWall;
          protected static TopWall TopWall;
          protected static Ball Ball;
+         protected static ScoreBoard ScoreBoard;
 
 
          public static void InitializeGame()
@@ -33,6 +33,7 @@ using System;
                  Console.ReadKey();
              }
 
+             ScoreBoard = new ScoreBoard();
              Player1 = new Player1();
              Player2 = new Player2();
              BottomWall = new BottomWall();

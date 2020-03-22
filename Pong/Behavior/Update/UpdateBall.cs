@@ -18,13 +18,17 @@ namespace Pong.Behavior.Update {
                 }
             }
 
-            if (CheckPosition.HasPlayer1Scored(Ball.XStartValue)) {
+            if (CheckPosition.HasPlayer1Scored(Ball.XStartValue)){
+                ScoreBoard.Player1Score++;
+                State.ScreenNeedsRedraw = true;
                 ResetBallPosition();
                 MoveBall();
                 return;
             }
 
             if (CheckPosition.HasPlayer2Scored(Ball.XStartValue)) {
+                ScoreBoard.Player2Score++;
+                State.ScreenNeedsRedraw = true;
                 ResetBallPosition();
                 MoveBall();
                 return;

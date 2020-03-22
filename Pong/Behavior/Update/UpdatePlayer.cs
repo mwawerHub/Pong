@@ -1,4 +1,5 @@
 ﻿using System;
+using Pong.Abstracts;
 using Pong.Globals;
 
 namespace Pong.Behavior.Update
@@ -15,3 +16,4 @@ namespace Pong.Behavior.Update
         }
     }
 }
+
