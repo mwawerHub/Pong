@@ -12,9 +12,6 @@ namespace Pong
     {
         static void Main(string[] args){
             try{
-                Introduction.DrawInstructions();
-                Console.ReadKey();
-
                 var bgMusic = new BackgroundMusic();
                 bgMusic.Play();
 
@@ -28,7 +25,6 @@ namespace Pong
                     State.ScreenNeedsRedraw = false;
                     State.PlayerNeedsRedraw = false;
                     State.BallNeedsRedraw = false;
-
                 }
             }
             catch (Exception e){

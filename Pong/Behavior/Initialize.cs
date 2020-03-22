@@ -2,6 +2,7 @@
 using Pong.Players;
 using Pong.PrepareConsole;
 using System;
+using Pong.Abstracts;
 
 namespace Pong.Behavior {
     public class Initialize
@@ -18,14 +19,15 @@ namespace Pong.Behavior {
          {
 
              Console.CursorVisible = false;
-             try
-             {
+             try{
                  ConsoleHelper.SetConsoleFont();
                  Console.SetWindowSize(1, 1);
                  Console.SetWindowPosition(0, 0);
                  Console.SetBufferSize(91, 71);
                  Console.SetWindowSize(91, 71);
                  Console.Title = "Pong";
+                 Introduction.DrawInstructions();
+                 Console.ReadKey();
              }
              catch (Exception e)
              {
