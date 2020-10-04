@@ -6,41 +6,21 @@ namespace ObjectCollisionTests
 {
     public class HasHitWallTests
     {
+        private const sbyte TopWallOffset = 1;
+        private const sbyte BottomWallOffset = -1;
+
         [SetUp]
-        public void Setup()
-        {
+        public void Setup() {
         }
 
         [Test]
-        public void HasHitWallTest1(){
-            Assert.IsFalse(CheckPosition.HasHitWall(Board.YMargin - 1));
+        public void HasHitWallTopWall() {
+            Assert.IsFalse(CheckPosition.HasHitWall(Board.YMargin + TopWallOffset));
         }
 
         [Test]
-        public void HasHitWallTest2(){
-            Assert.IsFalse(CheckPosition.HasHitWall(Board.YMargin + 1));
-        }
-
-        [Test]
-        public void HasHitWallTest3()
-        {
-            Assert.IsFalse(CheckPosition.HasHitWall(Board.Height - 1));
-        }
-
-        [Test]
-        public void HasHitWallTest4()
-        {
-            Assert.IsFalse(CheckPosition.HasHitWall(Board.Height + 1));
-        }
-
-        [Test]
-        public void HasHitWallTest5(){
-            Assert.IsFalse(!CheckPosition.HasHitWall(Board.YMargin));
-        }
-
-        [Test]
-        public void HasHitWallTest6(){
-            Assert.IsFalse(!CheckPosition.HasHitWall(Board.Height));
+        public void HasHitBottomWall() {
+            Assert.IsFalse(CheckPosition.HasHitWall(Board.Height + BottomWallOffset));
         }
     }
 }
