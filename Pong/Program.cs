@@ -1,22 +1,20 @@
 using Pong.Behavior;
+using Pong.Behavior.Update;
 using Pong.Globals;
 using System;
 using System.Threading;
-using Pong.Abstracts;
-using Pong.Behavior.Update;
 
 namespace Pong
 {
-
     public class Program
     {
-        static void Main(string[] args){
-            try{
+        private static void Main(string[] args) {
+            try {
                 var bgMusic = new BackgroundMusic();
                 bgMusic.Play();
 
                 Initialize.InitializeGame();
-                while (true){
+                while (true) {
                     Thread.Sleep(10);
                     var key = (Console.KeyAvailable) ? Console.ReadKey(true).Key : 0;
                     Update.UpdateAll(key);
@@ -27,7 +25,7 @@ namespace Pong
                     State.BallNeedsRedraw = false;
                 }
             }
-            catch (Exception e){
+            catch (Exception e) {
                 Console.WriteLine(e);
                 throw;
             }

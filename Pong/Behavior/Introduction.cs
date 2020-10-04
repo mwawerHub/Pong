@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Pong.Abstracts;
+using System;
 
-namespace Pong.Abstracts
+namespace Pong.Behavior
 {
     public abstract class Introduction
     {
