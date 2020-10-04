@@ -45,15 +45,17 @@ namespace Pong.Objects
 
         public void SetAngleAfterWallHit(byte x, byte y) {
             if (y <= Board.YMargin + 1 || y >= Board.Height - 1)
-                if (x <= Math.Floor((Board.Width + Board.XMargin) * 0.25))
+                if (x <= Math.Floor((Board.Width + Board.XMargin) * AreaPercentage.Quarter))
                     Angle = (Angle == Angle.Angle30) ? Angle.Angle60 : Angle.Angle30;
-                else if (x > Math.Floor((Board.Width + Board.XMargin) * 0.25) && x < Math.Floor((Board.Width + Board.XMargin) * 0.5))
+                else if (x > Math.Floor((Board.Width + Board.XMargin) * AreaPercentage.Quarter)
+                    && x < Math.Floor((Board.Width + Board.XMargin) * AreaPercentage.Half))
                     Angle = Angle.Angle60;
-                else if (x == Math.Floor((Board.Width + Board.XMargin) * 0.5))
+                else if (x == Math.Floor((Board.Width + Board.XMargin) * AreaPercentage.Half))
                     Angle = Angle.Angle90;
-                else if (x <= Math.Floor((Board.Width + Board.XMargin) * 0.75) && x > Math.Floor((Board.Width + Board.XMargin) * 0.5))
+                else if (x <= Math.Floor((Board.Width + Board.XMargin) * AreaPercentage.ThreeFourth)
+                    && x > Math.Floor((Board.Width + Board.XMargin) * AreaPercentage.Half))
                     Angle = Angle.Angle120;
-                else if (x > Math.Floor((Board.Width + Board.XMargin) * 0.75))
+                else if (x > Math.Floor((Board.Width + Board.XMargin) * AreaPercentage.ThreeFourth))
                     Angle = (Angle == Angle.Angle150) ? Angle.Angle120 : Angle.Angle150;
         }
 

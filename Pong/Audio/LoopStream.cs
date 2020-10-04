@@ -10,7 +10,7 @@ namespace Pong.Audio
 
         public LoopStream(WaveStream sourceStream) {
             this.sourceStream = sourceStream;
-            this.EnableLooping = true;
+            EnableLooping = true;
         }
 
         public override WaveFormat WaveFormat
@@ -36,7 +36,6 @@ namespace Pong.Audio
                 int bytesRead = sourceStream.Read(buffer, offset + totalBytesRead, count - totalBytesRead);
                 if (bytesRead == 0) {
                     if (sourceStream.Position == 0 || !EnableLooping) {
-                        // something wrong with the source stream
                         break;
                     }
                     sourceStream.Position = 0;
