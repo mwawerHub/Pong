@@ -127,7 +127,7 @@ namespace ObjectCollisionTests
         [Test]
         public void ShouldNotHitPlayer2() {
             var hasHit = false;
-            for (sbyte j = -1; j < 1; j++) {
+            for (sbyte j = 0; j < 2; j++) {
                 for (sbyte i = 0; i < player2.Height + 2; i++) {
                     SetBallPositionForPlayer(j, i, player2);
                     if (CheckPosition.HasHitPlayer(player2, ball)) {

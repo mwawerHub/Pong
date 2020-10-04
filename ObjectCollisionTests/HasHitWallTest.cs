@@ -15,12 +15,12 @@ namespace ObjectCollisionTests
 
         [Test]
         public void HasHitWallTopWall() {
-            Assert.IsFalse(CheckPosition.HasHitWall(Board.YMargin + TopWallOffset));
+            Assert.IsTrue(CheckPosition.HasHitWall(Board.YMargin + TopWallOffset));
         }
 
         [Test]
         public void HasHitBottomWall() {
-            Assert.IsFalse(CheckPosition.HasHitWall(Board.Height + BottomWallOffset));
+            Assert.IsTrue(CheckPosition.HasHitWall(Board.Height + BottomWallOffset));
         }
     }
 }
