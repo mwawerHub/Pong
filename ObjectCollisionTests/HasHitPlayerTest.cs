@@ -12,8 +12,8 @@ namespace ObjectCollisionTests
         private Player2 player2;
         private Ball ball;
 
-        private sbyte p1XOffset = 1;
-        private sbyte p2XOffset = -1;
+        private const sbyte p1XOffset = 1;
+        private const sbyte p2XOffset = -1;
 
         /*  Player pixel count
          *
@@ -24,11 +24,11 @@ namespace ObjectCollisionTests
          * [] - BottomPixel
          */
 
-        private sbyte TopPixelOffset = 0;
-        private sbyte UpperMiddlePixelOffset = 1;
-        private sbyte MiddlePixelOffset = 2;
-        private sbyte LowerMiddlePixelOffset = 1;
-        private sbyte BottomPixelOffset = 4;
+        private const sbyte TopPixelOffset = 0;
+        private const sbyte UpperMiddlePixelOffset = 1;
+        private const sbyte MiddlePixelOffset = 2;
+        private const sbyte LowerMiddlePixelOffset = 3;
+        private const sbyte BottomPixelOffset = 4;
 
         [SetUp]
         public void Setup() {
@@ -111,12 +111,26 @@ namespace ObjectCollisionTests
         #endregion PLAYER2
 
         [Test]
-        public void ShouldNotHitPlayer1Test1() {
+        public void ShouldNotHitPlayer1() {
             var hasHit = false;
-            for (sbyte j = 0; j < 2; j++) {
+            for (sbyte j = -1; j < 1; j++) {
                 for (sbyte i = 0; i < player1.Height + 2; i++) {
                     SetBallPositionForPlayer(j, i, player1);
                     if (CheckPosition.HasHitPlayer(player1, ball)) {
+                        hasHit = true;
+                    }
+                }
+            }
+            Assert.IsFalse(hasHit);
+        }
+
+        [Test]
+        public void ShouldNotHitPlayer2() {
+            var hasHit = false;
+            for (sbyte j = -1; j < 1; j++) {
+                for (sbyte i = 0; i < player2.Height + 2; i++) {
+                    SetBallPositionForPlayer(j, i, player2);
+                    if (CheckPosition.HasHitPlayer(player2, ball)) {
                         hasHit = true;
                     }
                 }
