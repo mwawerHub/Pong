@@ -1,19 +1,26 @@
-﻿using System;
-using Pong.Abstracts;
+﻿using Pong.Abstracts;
 using Pong.Globals;
+using System;
 
 namespace Pong.Behavior.Update
 {
     public class UpdatePlayer : Update
     {
-        public static void UpdatePlayerPosition(ConsoleKey key){
-            if (key == 0) return;
-            UpdateLastPosition(Player1);
-            UpdateLastPosition(Player2);
-            Player1.Move(key);
-            Player2.Move(key);
-            State.PlayerNeedsRedraw = true;
+        private static ConsoleKey key;
+
+        public static void UpdatePlayerPosition(ConsoleKey pressedKey) {
+            if (pressedKey == 0) return;
+            key = pressedKey;
+            UpdatePosition(Player1);
+            UpdatePosition(Player2);
+        }
+
+        private static void UpdatePosition(ConsolePlayer player) {
+            UpdateLastPosition(player);
+            player.Move(key);
+            if (CheckPosition.HasPlayerReachedWall(player))
+                ResetPosition(player);
+            else State.PlayerNeedsRedraw = true;
         }
     }
 }
-

@@ -6,7 +6,8 @@ namespace Pong.PrepareConsole
     public class ConsoleHelper
     {
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
-        internal unsafe struct CONSOLE_FONT_INFO_EX{
+        internal unsafe struct CONSOLE_FONT_INFO_EX
+        {
             internal uint cbSize;
             internal uint nFont;
             internal COORD dwFontSize;
@@ -16,11 +17,12 @@ namespace Pong.PrepareConsole
         }
 
         [StructLayout(LayoutKind.Sequential)]
-        internal struct COORD{
+        internal struct COORD
+        {
             internal short X;
             internal short Y;
 
-            internal COORD(short x, short y){
+            internal COORD(short x, short y) {
                 X = x;
                 Y = y;
             }
@@ -32,18 +34,18 @@ namespace Pong.PrepareConsole
         private static IntPtr INVALID_HANDLE_VALUE = new IntPtr(-1);
 
         [DllImport("kernel32.dll", SetLastError = true)]
-        static extern bool SetCurrentConsoleFontEx(
+        private static extern bool SetCurrentConsoleFontEx(
             IntPtr consoleOutput,
             bool maximumWindow,
             ref CONSOLE_FONT_INFO_EX consoleCurrentFontEx);
 
         [DllImport("kernel32.dll", SetLastError = true)]
-        static extern IntPtr GetStdHandle(int dwType);
+        private static extern IntPtr GetStdHandle(int dwType);
 
-        public static void SetConsoleFont(string fontName = "Terminal"){
-            unsafe{
+        public static void SetConsoleFont(string fontName = "Terminal") {
+            unsafe {
                 IntPtr hnd = GetStdHandle(STD_OUTPUT_HANDLE);
-                if (hnd != INVALID_HANDLE_VALUE){
+                if (hnd != INVALID_HANDLE_VALUE) {
                     CONSOLE_FONT_INFO_EX newInfo = new CONSOLE_FONT_INFO_EX();
                     IntPtr ptr = new IntPtr(newInfo.FaceName);
                     Marshal.Copy(fontName.ToCharArray(), 0, ptr, fontName.Length);

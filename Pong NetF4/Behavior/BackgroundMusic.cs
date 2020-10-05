@@ -12,11 +12,11 @@ namespace Pong.Behavior
 
         public string SongToPlay { get; set; }
 
-        public BackgroundMusic(){
+        public BackgroundMusic() {
             SongToPlay = ExecutablePath + "\\Sounds\\backgroundMusic.wav";
         }
 
-        public void Play(){
+        public void Play() {
             var reader = new WaveFileReader(SongToPlay);
             var MediaPlayer = new DirectSoundOut();
             var loop = new LoopStream(reader);
@@ -25,4 +25,3 @@ namespace Pong.Behavior
         }
     }
 }
-

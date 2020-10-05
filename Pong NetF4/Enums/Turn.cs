@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Pong.Enums 
+﻿namespace Pong.Enums
 {
-    public enum Turn {
+    public enum Turn
+    {
         Left,
         Up,
         Right,

@@ -4,14 +4,13 @@ namespace Pong.Audio
 {
     public class LoopStream : WaveStream
     {
-        WaveStream sourceStream;
+        private WaveStream sourceStream;
 
         public bool EnableLooping { get; set; }
 
-        public LoopStream(WaveStream sourceStream)
-        {
+        public LoopStream(WaveStream sourceStream) {
             this.sourceStream = sourceStream;
-            this.EnableLooping = true;
+            EnableLooping = true;
         }
 
         public override WaveFormat WaveFormat
@@ -30,18 +29,13 @@ namespace Pong.Audio
             set { sourceStream.Position = value; }
         }
 
-        public override int Read(byte[] buffer, int offset, int count)
-        {
+        public override int Read(byte[] buffer, int offset, int count) {
             int totalBytesRead = 0;
 
-            while (totalBytesRead < count)
-            {
+            while (totalBytesRead < count) {
                 int bytesRead = sourceStream.Read(buffer, offset + totalBytesRead, count - totalBytesRead);
-                if (bytesRead == 0)
-                {
-                    if (sourceStream.Position == 0 || !EnableLooping)
-                    {
-                        // something wrong with the source stream
+                if (bytesRead == 0) {
+                    if (sourceStream.Position == 0 || !EnableLooping) {
                         break;
                     }
                     sourceStream.Position = 0;

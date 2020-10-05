@@ -4,7 +4,7 @@ namespace Pong.Objects
 {
     public class TopWall : Wall
     {
-        public TopWall() : base(){
+        public TopWall() : base() {
             YStartValue = Board.YMargin;
         }
     }

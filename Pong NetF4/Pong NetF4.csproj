@@ -48,7 +48,7 @@
   <ItemGroup>
     <Compile Include="Abstracts\Board.cs" />
     <Compile Include="Abstracts\ConsolePlayer.cs" />
-    <Compile Include="Abstracts\Introduction.cs" />
+    <Compile Include="Behavior\Introduction.cs" />
     <Compile Include="Abstracts\Shape.cs" />
     <Compile Include="Abstracts\Wall.cs" />
     <Compile Include="Audio\LoopStream.cs" />
@@ -62,6 +62,7 @@
     <Compile Include="Enums\Angle.cs" />
     <Compile Include="Enums\Direction.cs" />
     <Compile Include="Enums\Turn.cs" />
+    <Compile Include="Globals\AreaPercentage.cs" />
     <Compile Include="Globals\State.cs" />
     <Compile Include="Interfaces\IMovement.cs" />
     <Compile Include="Objects\Ball.cs" />

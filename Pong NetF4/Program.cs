@@ -4,12 +4,11 @@ using Pong.Globals;
 using System;
 using System.Threading;
 
-namespace Pong_NetF4 {
-
-    class Program {
-
-        static void Main(string[] args) 
-        {
+namespace Pong_NetF4
+{
+    internal class Program
+    {
+        private static void Main(string[] args) {
             try {
                 var bgMusic = new BackgroundMusic();
                 bgMusic.Play();
