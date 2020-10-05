@@ -5,7 +5,7 @@ Simple Pong game created within Console. Just for pure fun and git training.
 
 I saw many similar project (snake, contra etc.) so I told my self it would be fun to create something similar.
 
-![alt text](https://https://github.com/mwawerHub/Pong/blob/master/pong.png "Pong")
+![Pong](https://github.com/mwawerHub/Pong/raw/master/pong.png "Pong")
 
 # Tech
 
